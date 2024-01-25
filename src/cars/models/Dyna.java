@@ -1,20 +1,26 @@
 package cars.models;
 
-import cars.types.Track;
+import cars.types.Truck;
 import components.*;
 import components.Rosette;
 import exceptions.StartCarException;
 import java.util.Arrays;
 
-public class Dyna extends Track {
+import static enums.Country.JAPAN;
+import static enums.DirectoryCostPrice.DYNA_COST_PRICE;
+import static enums.MaxSpeed.DYNA_SPEED;
+import static enums.Price.DYNA_PRICE;
+import static enums.Transmission.ROBOT;
+
+public class Dyna extends Truck {
 
     private Rosette rosette;
 
-    public Dyna(String color, boolean isMotionNow, double price, Electrician electrician, Engine engine,
-                GasTank gasTank, Headlights headlights, String country, Wheel[] wheels,
-                double costPrice, Rosette rosette) {
-        super("Dyna", color, 102, isMotionNow, price, electrician, engine, gasTank, headlights, country,
-                wheels, costPrice, 1477);
+    public Dyna(String color, boolean isMotionNow, Electrician electrician,
+                Engine engine, GasTank gasTank, Headlights headlights,
+                 Wheel[] wheels, Rosette rosette) {
+        super("Dyna", color, DYNA_SPEED, isMotionNow, ROBOT, DYNA_PRICE, electrician,
+                engine, gasTank, headlights, JAPAN, wheels, DYNA_COST_PRICE);
         this.rosette = rosette;
     }
 
@@ -42,7 +48,7 @@ public class Dyna extends Track {
                 +
                 ", transmission=" + transmission
                 +
-                ", carPrice=" + carPrice
+                ", carPrice=" + price
                 +
                 ", electrician=" + electrician
                 +

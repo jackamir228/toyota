@@ -1,28 +1,31 @@
 package shop;
 
+import enums.Country;
 import exceptions.SaleCarException;
 import factory.Conveyor;
 import factory.Factory;
-import cars.Car;
+import cars.types.Car;
 import cars.models.Camry;
 import cars.models.Dyna;
 import cars.models.Hiance;
 import cars.models.Solara;
 import carstorage.CarStorage;
 
+import static enums.Country.JAPAN;
 import static enums.Price.*;
 
 public class Manager {
 
     private final String name;
-    private final Factory factory = new Factory("Japan");
-    private final Conveyor conveyor = new Conveyor(factory);
+    private Factory factory = new Factory(JAPAN);
+    private Conveyor conveyor = new Conveyor(factory, JAPAN);
     private Report report;
-    private String filename = "C:\\Users\\pisapopa\\IdeaProjects\\toyota\\resources\\Report";
 
-    public Manager(String name) {
+    public Manager(String name, Report report, Factory factory, Conveyor conveyor) {
         this.name = name;
-        this.report = new Report(name);
+        this.report = report;
+        this.factory = factory;
+        this.conveyor = conveyor;
     }
 
     public String getName() {
@@ -56,23 +59,23 @@ public class Manager {
             }
         }
         if (carStorage == null) {
-            Hiance hiance = conveyor.createHiance("black", 22_000, "Japan", 1_000);
+            Hiance hiance = conveyor.createHiance("black");
             if (buyerMoneyAmount >= HIANCE_PRICE.getPriceCar()) {
                 carStorage.addHiance(hiance);
             }
             if ((buyerMoneyAmount < HIANCE_PRICE.getPriceCar())
                     && (buyerMoneyAmount > DYNA_PRICE.getPriceCar())) {
-                Dyna dyna = conveyor.createDyna("black", 15_000, "Japan", 12_000);
+                Dyna dyna = conveyor.createDyna("black");
                 carStorage.addDyna(dyna);
             }
             if ((buyerMoneyAmount < DYNA_PRICE.getPriceCar())
                     && (buyerMoneyAmount > SOLARA_PRICE.getPriceCar())) {
-                Solara solara = conveyor.createSalora("white", 12_000, "Japan", 8_000);
+                Solara solara = conveyor.createSalora("white");
                 carStorage.addSolara(solara);
             }
             if ((buyerMoneyAmount < SOLARA_PRICE.getPriceCar())
                     && (buyerMoneyAmount > CAMRY_PRICE.getPriceCar())) {
-                Camry camry = conveyor.createCamry("black", 10_000, "Japan", 5_000);
+                Camry camry = conveyor.createCamry("black");
                 carStorage.addCamry(camry);
             }
             if (buyerMoneyAmount < 10_000) {
@@ -83,7 +86,7 @@ public class Manager {
     }
 
     public void createFileReport(String filename) {
-        report.createFileReport();
+        report.createFileReport("C:\\Users\\pisapopa\\IdeaProjects\\toyota\\resources\\Report");
     }
 
 }

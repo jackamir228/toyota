@@ -6,13 +6,18 @@ import components.Rosette;
 import components.UsbForCamry;
 import components.CruiseСontrol;
 import components.Roof;
+import enums.Country;
 
 public class Factory {
 
-    private String country;
+    private final Country country;
 
-    public Factory(String country) {
+    public Factory(Country country) {
         this.country = country;
+    }
+
+    public Country getCountry() {
+        return country;
     }
 
     public Electrician makeElectrician() {
@@ -20,18 +25,15 @@ public class Factory {
     }
 
     public Engine makeEngine() {
-        Engine engine = new Engine(true);
-        return engine;
+        return new Engine(true);
     }
 
     public GasTank makeGasTank() {
-        GasTank gasTank = new GasTank(0);
-        return gasTank;
+        return new GasTank(0);
     }
 
     public Headlights makeHeadlights() {
-        Headlights headlights = new Headlights(true);
-        return headlights;
+        return new Headlights(true);
     }
 
     public Wheel[] makeWheels(double diameter) {
@@ -44,33 +46,27 @@ public class Factory {
     }
 
     public CruiseСontrol makeCruiseControle() {
-        CruiseСontrol cruiseСontrol = new CruiseСontrol(true);
-        return cruiseСontrol;
+        return new CruiseСontrol(true);
     }
 
     public Roof makeRoof() {
-        Roof roof = new Roof(false);
-        return roof;
+        return new Roof(false);
     }
 
     public Wheel makeSpareWheel() {
-        Wheel spareWheel = new Wheel(false, 20);
-        return spareWheel;
+        return new Wheel(false, 20);
     }
 
     public Fridge makeFridge() {
-        Fridge fridge = new Fridge(true);
-        return fridge;
+        return  new Fridge(true);
     }
 
     public Rosette makeRosette() {
-        Rosette rosette = new Rosette(true);
-        return rosette;
+        return new Rosette(true);
     }
 
     public UsbForCamry makeUsb() {
-        UsbForCamry usbForCamry = new UsbForCamry(true);
-        return usbForCamry;
+        return new UsbForCamry(true);
     }
 
     @Override

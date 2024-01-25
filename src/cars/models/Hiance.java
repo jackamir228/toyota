@@ -1,18 +1,25 @@
 package cars.models;
 
-import cars.types.Track;
+import cars.types.Truck;
 import components.*;
+
 import java.util.Arrays;
 
-public class Hiance extends Track {
+import static enums.Country.JAPAN;
+import static enums.DirectoryCostPrice.HIANCE_COST_PRICE;
+import static enums.MaxSpeed.HIANCE_SPEED;
+import static enums.Price.HIANCE_PRICE;
+import static enums.Transmission.AUTOMATIC;
+
+public class Hiance extends Truck {
 
     private Wheel spareWheel;
 
-    public Hiance(String color, boolean isMotionNow, double carPrice, Electrician electrician,
-                  Engine engine, GasTank gasTank, Headlights headlights, String country, Wheel[] wheels,
-                  double costPrice, Wheel spareWheel) {
-        super("Hiance", color, 102, isMotionNow, carPrice, electrician, engine, gasTank, headlights,
-                country, wheels, costPrice, 1477);
+    public Hiance(String color, boolean isMotionNow, Electrician electrician,
+                  Engine engine, GasTank gasTank, Headlights headlights,
+                  Wheel[] wheels, Wheel spareWheel) {
+        super("Hiance", color, HIANCE_SPEED, isMotionNow, AUTOMATIC, HIANCE_PRICE,
+                electrician, engine, gasTank, headlights, JAPAN, wheels, HIANCE_COST_PRICE);
         this.spareWheel = spareWheel;
     }
 
@@ -38,7 +45,7 @@ public class Hiance extends Track {
                 +
                 ", transmission=" + transmission
                 +
-                ", carPrice=" + carPrice
+                ", carPrice=" + price
                 +
                 ", electrician=" + electrician
                 +

@@ -1,40 +1,39 @@
-package cars;
+package cars.types;
 
 import components.*;
-import enums.Transmission;
+import enums.*;
 import exceptions.StartCarException;
 
 public abstract class Car {
 
     protected final String model;
     protected String color;
-    protected double maxSpeed;
+    protected MaxSpeed maxSpeed;
     protected boolean isMotionNow;
     protected Transmission transmission;
-    protected double carPrice;
+    protected Price price;
     protected Electrician electrician;
     protected Engine engine;
     protected GasTank gasTank;
     protected Headlights headlights;
-    protected String country;
-
+    protected Country country;
     protected Wheel wheel1;
     protected Wheel wheel2;
     protected Wheel wheel3;
     protected Wheel wheel4;
     protected Wheel[] wheels;
-    protected double costPrice;
+    protected DirectoryCostPrice costPrice;
 
-    public Car(String model, String color, double maxSpeed, boolean isMotionNow, Transmission transmission,
-               double carPrice, Electrician electrician, Engine engine, GasTank gasTank,
-               Headlights headlights, String country,
-               Wheel[] wheels, double costPrice) {
+    public Car(String model, String color, MaxSpeed maxSpeed, boolean isMotionNow, Transmission transmission,
+               Price price, Electrician electrician, Engine engine, GasTank gasTank,
+               Headlights headlights, Country country,
+               Wheel[] wheels, DirectoryCostPrice costPrice) {
         this.model = model;
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.isMotionNow = isMotionNow;
         this.transmission = transmission;
-        this.carPrice = carPrice;
+        this.price = price;
         this.electrician = electrician;
         this.engine = engine;
         this.gasTank = gasTank;
@@ -48,11 +47,11 @@ public abstract class Car {
         return model;
     }
 
-    public double getCostPrice() {
+    public DirectoryCostPrice getCostPrice() {
         return costPrice;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
@@ -64,7 +63,7 @@ public abstract class Car {
         this.color = color;
     }
 
-    public double getMaxSpeed() {
+    public MaxSpeed getMaxSpeed() {
         return maxSpeed;
     }
 
@@ -180,7 +179,7 @@ public abstract class Car {
         throw new StartCarException("Фары выключены");
     }
 
-    public double getCarPrice() {
-        return carPrice;
+    public Price getCarPrice() {
+        return price;
     }
 }

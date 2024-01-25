@@ -1,11 +1,12 @@
 package shop;
 
-import cars.Car;
+import cars.types.Car;
+import enums.Price;
 
 public class Cashier {
 
     private Car[] soldCars;
-    private static double income;
+    private static Price income;
 
     public void addIncome(Car car) {
         income = car.getCarPrice();

@@ -5,6 +5,7 @@ import cars.models.Dyna;
 import cars.models.Hiance;
 import cars.models.Solara;
 import carstorage.CarStorage;
+import enums.Country;
 import exceptions.SaleCarException;
 import factory.Conveyor;
 import factory.Factory;
@@ -12,16 +13,19 @@ import shop.Buyer;
 import shop.Manager;
 import shop.Report;
 
+import static enums.Country.JAPAN;
+
 public class Runner {
     public static void main(String[] args) throws SaleCarException {
 
-        Factory factory = new Factory("Japan");
-        Conveyor conveyor = new Conveyor(factory);
+        Factory factory = new Factory(JAPAN);
+        Conveyor conveyor = new Conveyor(factory, JAPAN);
+        Report report = new Report("Alexey");
 
-        Camry camry = conveyor.createCamry("black", 10_000, "Japan", 5_000);
-        Solara salora = conveyor.createSalora("white", 12_000, "Japan", 8_000);
-        Dyna dyna = conveyor.createDyna("black", 15_000, "Japan", 12_000);
-        Hiance hiance = conveyor.createHiance("black", 22_000, "Japan", 10_000);
+        Camry camry = conveyor.createCamry("black");
+        Solara salora = conveyor.createSalora("white");
+        Dyna dyna = conveyor.createDyna("black");
+        Hiance hiance = conveyor.createHiance("black");
 
         CarStorage carStorage = new CarStorage(conveyor);
         carStorage.addCamry(camry);
@@ -29,7 +33,7 @@ public class Runner {
         carStorage.addSolara(salora);
         carStorage.addHiance(hiance);
 
-        Manager manager = new Manager("Ivano");
+        Manager manager = new Manager("Ivano", report, factory, conveyor );
         Buyer buyer1 = new Buyer("Petr", 10000);
         Buyer buyer2 = new Buyer("Mark", 12000);
         Buyer buyer3 = new Buyer("Slava", 15000);
@@ -39,7 +43,7 @@ public class Runner {
 //        Buyer buyer7 = new Buyer("Vova", 8000);
 //        Buyer buyer8 = new Buyer("Boris", 30000);
 
-        Report report = new Report("Alexey");
+
 
         try {
             manager.saleCar(buyer1, carStorage);

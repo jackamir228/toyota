@@ -4,77 +4,75 @@ import cars.models.Camry;
 import cars.models.Dyna;
 import cars.models.Hiance;
 import cars.models.Solara;
+import enums.Country;
 
 public class Conveyor {
 
     private Factory factory;
+    private Country country;
 
-    public Conveyor(Factory factory) {
+    public Conveyor(Factory factory, Country country) {
         this.factory = factory;
+        this.country = country;
     }
 
-    public Camry createCamry(String color, double price, String country, double costPrice) {
-        return new Camry(
-            color,
-            true,
-            price,
-            this.factory.makeElectrician(),
-            this.factory.makeEngine(),
-            this.factory.makeGasTank(),
-            this.factory.makeHeadlights(),
-            country,
-            this.factory.makeWheels(17),
-            costPrice,
-            this.factory.makeCruiseControle(),
-            this.factory.makeUsb()
-        );
-    }
 
-    public Solara createSalora(String color, double price, String country, double costPrice) {
-        return new Solara(
-                color,
-                true,
-                price,
+//    private void createGeneralDetails(Car car) {
+//        car.setElectrician(factory.makeElectrician());
+//        car.setEngine(factory.makeEngine());
+//        car.setGasTank(factory.makeGasTank());
+//        car.setHeadlights(factory.makeHeadlights());
+//    }
+
+    public Camry createCamry(String color) {
+        return new Camry(color,
+                false,
                 this.factory.makeElectrician(),
                 this.factory.makeEngine(),
                 this.factory.makeGasTank(),
                 this.factory.makeHeadlights(),
-                country,
+                this.factory.makeWheels(17),
+                this.factory.makeCruiseControle(),
+                this.factory.makeUsb()
+        );
+    }
+
+    public Solara createSalora(String color) {
+        return new Solara(
+                color,
+                false,
+                this.factory.makeElectrician(),
+                this.factory.makeEngine(),
+                this.factory.makeGasTank(),
+                this.factory.makeHeadlights(),
                 this.factory.makeWheels(16),
-                costPrice,
                 this.factory.makeRoof(),
                 this.factory.makeFridge()
         );
     }
 
-    public Dyna createDyna(String color, double price, String country, double costPrice) {
+    public Dyna createDyna(String color) {
         return new Dyna(
                 color,
-                true,
-                price,
+                false,
                 this.factory.makeElectrician(),
                 this.factory.makeEngine(),
                 this.factory.makeGasTank(),
                 this.factory.makeHeadlights(),
-                country,
                 this.factory.makeWheels(20),
-                costPrice,
                 this.factory.makeRosette()
         );
     }
 
-    public Hiance createHiance(String color, double price, String country, double costPrice) {
+    public Hiance createHiance(String color) {
         return new Hiance(
                 color,
-                true,
-                price,
+                false,
                 factory.makeElectrician(),
                 factory.makeEngine(),
                 factory.makeGasTank(),
                 factory.makeHeadlights(),
-                country,
                 factory.makeWheels(20),
-                costPrice,
                 factory.makeSpareWheel()
         );
     }

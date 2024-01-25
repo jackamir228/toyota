@@ -1,23 +1,19 @@
 package cars.types;
 
-import cars.Car;
 import components.*;
 import components.Roof;
+import enums.*;
 import exceptions.StartCarException;
-
-import static enums.Transmission.AUTOMATIC;
 
 public abstract class Cabriolet extends Car {
 
     private Roof roof;
 
-    public Cabriolet(String model, String color, boolean isMotionNow, double carPrice,
-                     Electrician electrician, Engine engine, GasTank gasTank, Headlights headlights, String country,
-                     Wheel[] wheels, double costPrice,
-                     Roof roof) {
-        super(model, color, 150, isMotionNow, AUTOMATIC, carPrice, electrician, engine, gasTank,
-                headlights, country,
-                wheels, costPrice);
+    public Cabriolet(String model, String color, MaxSpeed maxSpeed, boolean isMotionNow,
+                     Transmission transmission, Price price, Electrician electrician, Engine engine, GasTank gasTank,
+                     Headlights headlights, Country country, Wheel[] wheels, DirectoryCostPrice costPrice, Roof roof) {
+        super(model, color, maxSpeed, isMotionNow, transmission, price, electrician, engine, gasTank, headlights,
+                country, wheels, costPrice);
         this.roof = roof;
     }
 

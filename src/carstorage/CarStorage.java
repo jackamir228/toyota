@@ -7,7 +7,7 @@ import cars.models.Solara;
 import factory.Factory;
 import shop.Buyer;
 import factory.Conveyor;
-import cars.Car;
+import cars.types.Car;
 
 public class CarStorage {
 
