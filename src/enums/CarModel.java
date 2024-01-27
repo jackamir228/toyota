@@ -1,15 +1,15 @@
 package enums;
 
-public enum Price {
+public enum CarModel {
 
-    CAMRY_PRICE(10_000),
-    SOLARA_PRICE(12_000),
-    DYNA_PRICE(15_000),
-    HIANCE_PRICE(22_000);
+    CAMRY(10_000),
+    SOLARA(12_000),
+    DYNA(15_000),
+    HIANCE(22_000);
 
     private double priceCar;
 
-    Price(double priceCar) {
+    CarModel(double priceCar) {
         this.priceCar = priceCar;
     }
 

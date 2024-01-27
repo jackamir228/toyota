@@ -15,5 +15,12 @@ public class Fridge {
         isHaseble = haseble;
     }
 
-
+    @Override
+    public String toString() {
+        return "Fridge{"
+                +
+                "isHaseble=" + isHaseble
+                +
+                '}';
+    }
 }

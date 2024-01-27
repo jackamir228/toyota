@@ -14,5 +14,14 @@ public class CruiseСontrol {
     public void setWorkableNow(boolean workableNow) {
         isWorkableNow = workableNow;
     }
+
+    @Override
+    public String toString() {
+        return "CruiseСontrol{"
+                +
+                "isWorkableNow=" + isWorkableNow
+                +
+                '}';
+    }
 }
 

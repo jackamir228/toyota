@@ -15,4 +15,13 @@ public class Rosette {
     public void setHasRosette(boolean hasRosette) {
         isHasRosette = hasRosette;
     }
+
+    @Override
+    public String toString() {
+        return "Rosette{"
+                +
+                "isHasRosette=" + isHasRosette
+                +
+                '}';
+    }
 }

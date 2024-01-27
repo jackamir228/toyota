@@ -4,14 +4,13 @@ import cars.types.PassengerCar;
 import components.*;
 import components.CruiseСontrol;
 import components.UsbForCamry;
-import enums.*;
 import exceptions.StartCarException;
 import java.util.Arrays;
 
 import static enums.Country.JAPAN;
 import static enums.DirectoryCostPrice.CAMRY_COST_PRICE;
 import static enums.MaxSpeed.CAMRY_SPEED;
-import static enums.Price.CAMRY_PRICE;
+import static enums.CarModel.CAMRY;
 import static enums.Transmission.MECHANIC;
 
 public class Camry extends PassengerCar {
@@ -21,7 +20,7 @@ public class Camry extends PassengerCar {
     public Camry(String color, boolean isMotionNow, Electrician electrician, Engine engine,
                  GasTank gasTank, Headlights headlights, Wheel[] wheels, CruiseСontrol cruiseСontrol, UsbForCamry usb) {
         super("Camry", color, CAMRY_SPEED, isMotionNow,
-                MECHANIC, CAMRY_PRICE, electrician, engine, gasTank,
+                MECHANIC, CAMRY, electrician, engine, gasTank,
                 headlights, JAPAN, wheels, CAMRY_COST_PRICE, cruiseСontrol);
         this.usb = usb;
     }
@@ -51,7 +50,7 @@ public class Camry extends PassengerCar {
                 +
                 ", transmission=" + transmission
                 +
-                ", carPrice=" + price
+                ", carPrice=" + carModel
                 +
                 ", electrician=" + electrician
                 +

@@ -15,4 +15,13 @@ public class UsbForCamry {
     public void setHasUsb(boolean hasUsb) {
         isHasUsb = hasUsb;
     }
+
+    @Override
+    public String toString() {
+        return "UsbForCamry{"
+                +
+                "isHasUsb=" + isHasUsb
+                +
+                '}';
+    }
 }

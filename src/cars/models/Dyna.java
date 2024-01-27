@@ -9,7 +9,7 @@ import java.util.Arrays;
 import static enums.Country.JAPAN;
 import static enums.DirectoryCostPrice.DYNA_COST_PRICE;
 import static enums.MaxSpeed.DYNA_SPEED;
-import static enums.Price.DYNA_PRICE;
+import static enums.CarModel.DYNA;
 import static enums.Transmission.ROBOT;
 
 public class Dyna extends Truck {
@@ -19,7 +19,7 @@ public class Dyna extends Truck {
     public Dyna(String color, boolean isMotionNow, Electrician electrician,
                 Engine engine, GasTank gasTank, Headlights headlights,
                  Wheel[] wheels, Rosette rosette) {
-        super("Dyna", color, DYNA_SPEED, isMotionNow, ROBOT, DYNA_PRICE, electrician,
+        super("Dyna", color, DYNA_SPEED, isMotionNow, ROBOT, DYNA, electrician,
                 engine, gasTank, headlights, JAPAN, wheels, DYNA_COST_PRICE);
         this.rosette = rosette;
     }
@@ -48,7 +48,7 @@ public class Dyna extends Truck {
                 +
                 ", transmission=" + transmission
                 +
-                ", carPrice=" + price
+                ", carPrice=" + carModel
                 +
                 ", electrician=" + electrician
                 +

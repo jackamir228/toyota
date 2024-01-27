@@ -4,6 +4,8 @@ import cars.models.Camry;
 import cars.models.Dyna;
 import cars.models.Hiance;
 import cars.models.Solara;
+import cars.types.Car;
+import enums.CarModel;
 import enums.Country;
 
 public class Conveyor {
@@ -75,5 +77,23 @@ public class Conveyor {
                 factory.makeWheels(20),
                 factory.makeSpareWheel()
         );
+    }
+
+    public Car createCar(CarModel carModel, String color) {
+        switch (carModel) {
+            case CAMRY -> {
+                return createCamry("black");
+            }
+            case SOLARA -> {
+                return createSalora("white");
+            }
+            case DYNA -> {
+                return createDyna("black");
+            }
+            case HIANCE -> {
+                return createHiance("black");
+            }
+            default -> throw new RuntimeException("Машина с такой моделью не найдена");
+        }
     }
 }

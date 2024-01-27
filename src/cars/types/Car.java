@@ -11,7 +11,7 @@ public abstract class Car {
     protected MaxSpeed maxSpeed;
     protected boolean isMotionNow;
     protected Transmission transmission;
-    protected Price price;
+    protected CarModel carModel;
     protected Electrician electrician;
     protected Engine engine;
     protected GasTank gasTank;
@@ -25,7 +25,7 @@ public abstract class Car {
     protected DirectoryCostPrice costPrice;
 
     public Car(String model, String color, MaxSpeed maxSpeed, boolean isMotionNow, Transmission transmission,
-               Price price, Electrician electrician, Engine engine, GasTank gasTank,
+               CarModel carModel, Electrician electrician, Engine engine, GasTank gasTank,
                Headlights headlights, Country country,
                Wheel[] wheels, DirectoryCostPrice costPrice) {
         this.model = model;
@@ -33,7 +33,7 @@ public abstract class Car {
         this.maxSpeed = maxSpeed;
         this.isMotionNow = isMotionNow;
         this.transmission = transmission;
-        this.price = price;
+        this.carModel = carModel;
         this.electrician = electrician;
         this.engine = engine;
         this.gasTank = gasTank;
@@ -179,7 +179,7 @@ public abstract class Car {
         throw new StartCarException("Фары выключены");
     }
 
-    public Price getCarPrice() {
-        return price;
+    public CarModel getCarPrice() {
+        return carModel;
     }
 }

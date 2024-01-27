@@ -4,24 +4,32 @@ import cars.models.Camry;
 import cars.models.Dyna;
 import cars.models.Hiance;
 import cars.models.Solara;
+import enums.CarModel;
+import exceptions.CarNotFoundException;
 import factory.Factory;
-import shop.Buyer;
 import factory.Conveyor;
 import cars.types.Car;
 
-public class CarStorage {
+import java.util.Arrays;
 
-    public Car[] carStorage = new Car[100];
+import static enums.CarModel.*;
+
+public class Storage {
+
+    public Car[] carStorage = new Car[10];
     private Factory factory;
     private Conveyor conveyor;
     private Camry camry;
     private Solara solara;
     private Dyna dyna;
     private Hiance hiance;
-    private Buyer buyer;
 
-    public CarStorage(Conveyor conveyor) {
+    public Storage(Conveyor conveyor) {
         this.conveyor = conveyor;
+    }
+
+    public Car[] getCarStorage() {
+        return carStorage;
     }
 
     public void addCamry(Camry camry) {
@@ -42,22 +50,6 @@ public class CarStorage {
         }
     }
 
-    public Camry getCamry() {
-        return camry;
-    }
-
-    public Solara getSolara() {
-        return solara;
-    }
-
-    public Dyna getDyna() {
-        return dyna;
-    }
-
-    public Hiance getHiance() {
-        return hiance;
-    }
-
     public void addHiance(Hiance hiance) {
         for (int i = 0; i < carStorage.length; i++) {
             if (carStorage[i] == null) {
@@ -65,10 +57,6 @@ public class CarStorage {
                 return;
             }
         }
-    }
-
-    public Car[] getCarStorage() {
-        return carStorage;
     }
 
     public void addDyna(Dyna dyna) {
@@ -81,18 +69,18 @@ public class CarStorage {
     }
 
     public void checkInfo() {
-        for (int i = 0; i < carStorage.length; i++) {
-            if (carStorage[i] instanceof Camry) {
-                System.out.println(carStorage[i]);
+        for (Car car : carStorage) {
+            if (car instanceof Camry) {
+                System.out.println(car);
             }
-            if (carStorage[i] instanceof Solara) {
-                System.out.println(carStorage[i]);
+            if (car instanceof Solara) {
+                System.out.println(car);
             }
-            if (carStorage[i] instanceof Hiance) {
-                System.out.println(carStorage[i]);
+            if (car instanceof Hiance) {
+                System.out.println(car);
             }
-            if (carStorage[i] instanceof Dyna) {
-                System.out.println(carStorage[i]);
+            if (car instanceof Dyna) {
+                System.out.println(car);
             }
         }
     }
@@ -108,44 +96,65 @@ public class CarStorage {
         return null;
     }
 
-    public Camry removeCamry() {
+    public Camry removeCamry() throws CarNotFoundException {
         for (int i = carStorage.length - 1; i >= 0; i--) {
             if (carStorage[i] != null && carStorage[i] instanceof Camry camry1) {
                 carStorage[i] = null;
                 return camry1;
             }
         }
-        return null;
+        throw new CarNotFoundException("Ошибка", CAMRY);
     }
 
-    public Solara removeSolara() {
+    public Solara removeSolara() throws CarNotFoundException {
         for (int i = carStorage.length - 1; i >= 0; i--) {
             if (carStorage[i] != null && carStorage[i] instanceof Solara solara1) {
                 carStorage[i] = null;
                 return solara1;
             }
         }
-        return null;
+        throw new CarNotFoundException("Ошибка", SOLARA);
     }
 
-    public Dyna removeDyna() {
+    public Dyna removeDyna() throws CarNotFoundException {
         for (int i = carStorage.length - 1; i >= 0; i--) {
             if (carStorage[i] != null && carStorage[i] instanceof Dyna dyna1) {
                 carStorage[i] = null;
                 return dyna1;
             }
         }
-        return null;
+        throw new CarNotFoundException("Ошибка", DYNA);
     }
 
-    public Hiance removeHiance() {
+    public Hiance removeHiance() throws CarNotFoundException {
         for (int i = carStorage.length - 1; i >= 0; i--) {
             if (carStorage[i] != null && carStorage[i] instanceof Hiance hiance1) {
                 carStorage[i] = null;
                 return hiance1;
             }
         }
-        return null;
+        throw new CarNotFoundException("Ошибка", HIANCE);
+    }
+
+    @Override
+    public String toString() {
+        return "Storage{"
+                +
+                "carStorage=" + Arrays.toString(carStorage)
+                +
+                ", factory=" + factory
+                +
+                ", conveyor=" + conveyor
+                +
+                ", camry=" + camry
+                +
+                ", solara=" + solara
+                +
+                ", dyna=" + dyna
+                +
+                ", hiance=" + hiance
+                +
+                '}';
     }
 }
 

@@ -10,9 +10,9 @@ public abstract class Cabriolet extends Car {
     private Roof roof;
 
     public Cabriolet(String model, String color, MaxSpeed maxSpeed, boolean isMotionNow,
-                     Transmission transmission, Price price, Electrician electrician, Engine engine, GasTank gasTank,
+                     Transmission transmission, CarModel carModel, Electrician electrician, Engine engine, GasTank gasTank,
                      Headlights headlights, Country country, Wheel[] wheels, DirectoryCostPrice costPrice, Roof roof) {
-        super(model, color, maxSpeed, isMotionNow, transmission, price, electrician, engine, gasTank, headlights,
+        super(model, color, maxSpeed, isMotionNow, transmission, carModel, electrician, engine, gasTank, headlights,
                 country, wheels, costPrice);
         this.roof = roof;
     }

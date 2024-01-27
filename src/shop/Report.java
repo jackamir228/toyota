@@ -6,7 +6,7 @@ import cars.models.Hiance;
 import cars.models.Solara;
 import cars.types.Car;
 import enums.DirectoryCostPrice;
-import enums.Price;
+import enums.CarModel;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class Report {
         double camryAllOutcome = 0;
         for (int i = 0; i < countSoldCars; i++) {
             Car soldCar = soldCars[i];
-            camryAllIncome = Price.CAMRY_PRICE.getPriceCar();
+            camryAllIncome = CarModel.CAMRY.getPriceCar();
             camryAllIncome = DirectoryCostPrice.CAMRY_COST_PRICE.getCostPrice();
             report.append(camry.getModel())
                     .append(" - ")

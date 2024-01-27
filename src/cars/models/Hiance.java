@@ -8,7 +8,7 @@ import java.util.Arrays;
 import static enums.Country.JAPAN;
 import static enums.DirectoryCostPrice.HIANCE_COST_PRICE;
 import static enums.MaxSpeed.HIANCE_SPEED;
-import static enums.Price.HIANCE_PRICE;
+import static enums.CarModel.HIANCE;
 import static enums.Transmission.AUTOMATIC;
 
 public class Hiance extends Truck {
@@ -18,7 +18,7 @@ public class Hiance extends Truck {
     public Hiance(String color, boolean isMotionNow, Electrician electrician,
                   Engine engine, GasTank gasTank, Headlights headlights,
                   Wheel[] wheels, Wheel spareWheel) {
-        super("Hiance", color, HIANCE_SPEED, isMotionNow, AUTOMATIC, HIANCE_PRICE,
+        super("Hiance", color, HIANCE_SPEED, isMotionNow, AUTOMATIC, HIANCE,
                 electrician, engine, gasTank, headlights, JAPAN, wheels, HIANCE_COST_PRICE);
         this.spareWheel = spareWheel;
     }
@@ -45,7 +45,7 @@ public class Hiance extends Truck {
                 +
                 ", transmission=" + transmission
                 +
-                ", carPrice=" + price
+                ", carPrice=" + carModel
                 +
                 ", electrician=" + electrician
                 +
