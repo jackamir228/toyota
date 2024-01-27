@@ -5,8 +5,9 @@ import cars.models.Dyna;
 import cars.models.Hiance;
 import cars.models.Solara;
 import cars.types.Car;
-import enums.DirectoryCostPrice;
 import enums.CarModel;
+import enums.DirectoryCostPrice;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -46,24 +47,55 @@ public class Report {
         return reportBuilder.toString();
     }
 
+
     private void addCarsReport(StringBuilder report) {
-        double camryAllIncome = 0;
-        double camryAllOutcome = 0;
-        for (int i = 0; i < countSoldCars; i++) {
-            Car soldCar = soldCars[i];
-            camryAllIncome = CarModel.CAMRY.getPriceCar();
-            camryAllIncome = DirectoryCostPrice.CAMRY_COST_PRICE.getCostPrice();
-            report.append(camry.getModel())
-                    .append(" - ")
-                    .append(camry.getCarPrice())
-                    .append(" - ")
-                    .append(camry.getCostPrice());
+        double allIncome = 0;
+        double allOutcome = 0;
+
+        for (Car soldCar : soldCars) {
+            if (soldCar != null) {
+
+                report.append(soldCar.getModel())
+                        .append(" - Доход: ")
+                        .append(soldCar.getCarPrice())
+                        .append(", Расход: ")
+                        .append(soldCar.getCostPrice())
+                        .append("\n");
+
+                switch (soldCar.getCarPrice()) {
+                    case HIANCE -> {
+                        allIncome += CarModel.HIANCE.getPriceCar();
+                    }
+                    case DYNA -> {
+                        allIncome += CarModel.DYNA.getPriceCar();
+                    }
+                    case SOLARA -> {
+                        allIncome += CarModel.SOLARA.getPriceCar();
+                    }
+                    case CAMRY -> {
+                        allIncome += CarModel.CAMRY.getPriceCar();
+                    }
+                }
+
+                switch (soldCar.getCostPrice()) {
+                    case HIANCE_COST_PRICE -> {
+                        allOutcome += DirectoryCostPrice.HIANCE_COST_PRICE.getCostPrice();
+                    }
+                    case DYNA_COST_PRICE -> {
+                        allOutcome += DirectoryCostPrice.DYNA_COST_PRICE.getCostPrice();
+                    }
+                    case SOLARA_COST_PRICE -> {
+                        allOutcome += DirectoryCostPrice.SOLARA_COST_PRICE.getCostPrice();
+                    }
+                    case CAMRY_COST_PRICE -> {
+                        allOutcome += DirectoryCostPrice.CAMRY_COST_PRICE.getCostPrice();
+                    }
+                }
+            }
         }
-        report.append("Итог: доходы - ")
-                .append(camryAllIncome)
-                .append(", расходы - ")
-                .append(camryAllOutcome)
-                .append(", прибыль - ")
-                .append(camryAllIncome - camryAllOutcome);
+        report.append("Итог: Доходы - ").append(allIncome)
+                .append(", Расходы - ").append(allOutcome)
+                .append(", Прибыль - ").append(allIncome - allOutcome);
+
     }
 }

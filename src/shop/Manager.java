@@ -15,7 +15,6 @@ public class Manager {
     private Factory factory = new Factory(JAPAN);
     private Conveyor conveyor = new Conveyor(factory, JAPAN);
     private Report report;
-    private Storage storage;
 
     public Manager(String name, Report report, Factory factory, Conveyor conveyor) {
         this.name = name;
@@ -29,12 +28,13 @@ public class Manager {
     }
 
     public Car saleCar(Buyer buyer, Storage storage) {
-        Car car = saleCarHelper(buyer);
+        Car car = saleCarHelper(buyer, storage);
         report.addSellCar(car);
+        report.createFileReport("C:\\Users\\pisapopa\\IdeaProjects\\toyota\\resources\\Report");
         return car;
     }
 
-    private Car saleCarHelper(Buyer buyer) {
+    private Car saleCarHelper(Buyer buyer, Storage storage) {
         double buyerMoneyAmount = buyer.getCountMoney();
 
         try {
@@ -46,6 +46,8 @@ public class Manager {
                 return storage.removeSolara();
             } else if ((buyerMoneyAmount >= CAMRY.getPriceCar())) {
                 return storage.removeCamry();
+            } else if (buyerMoneyAmount < 10_000) {
+                return null;
             }
         } catch (CarNotFoundException e) {
             return conveyor.createCar(e.getCarModel(), "black");
